@@ -25,7 +25,7 @@ const scene = new THREE.Scene();
 // Create a renderer with Antialiasing
 const renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio( window.devicePixelRatio);
-renderer.setClearColor("#333333");
+renderer.setClearColor("#333767");
 renderer.setSize( window.innerWidth, window.innerHeight);
 
 // Append Renderer to DOM
