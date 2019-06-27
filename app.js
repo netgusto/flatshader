@@ -8,6 +8,7 @@ const yellow2 = new THREE.Vector3(248.0/255.0, 166.0/255.0, 10.0/255.0);
 const black = new THREE.Vector3(.0, .0, .0);
 const nebulablue = new THREE.Vector3(84.0/255.0, 104.0/255.0, 1.0);
 const gustopink = new THREE.Vector3(1.0, 0.0, 102.0/255.0);
+const darkernebula = new THREE.Vector3(51.0/255.0, 55.0/255.0, 103.0/255.0);
 
 const gray10 = new THREE.Vector3(.1, .1, .1);
 const gray20 = new THREE.Vector3(.2, .2, .2);
@@ -25,7 +26,7 @@ const scene = new THREE.Scene();
 // Create a renderer with Antialiasing
 const renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio( window.devicePixelRatio);
-renderer.setClearColor("#333767");
+renderer.setClearColor("#FFFFFF");
 renderer.setSize( window.innerWidth, window.innerHeight);
 
 // Append Renderer to DOM
@@ -47,11 +48,11 @@ var algoliaMaterial = new THREE.ShaderMaterial({
     uniforms: {
         blend: { value: false },
         colors: { type: "fv", value: [
+            ...darkernebula.toArray(),
             ...gustopink.toArray(),
-            ...yellow2.toArray(),
             ...nebulablue.toArray(),
+            ...darkernebula.toArray(),
             ...gustopink.toArray(),
-            ...yellow2.toArray(),
             ...nebulablue.toArray()
         ] }
     },
@@ -63,12 +64,12 @@ var catchphraseMaterial = new THREE.ShaderMaterial({
     uniforms: {
         blend: { value: false },
         colors: { type: "fv", value: [
-            ...gray70.toArray(),
-            ...gray90.toArray(),
             ...white.toArray(),
-            ...gray70.toArray(),
-            ...gray90.toArray(),
             ...white.toArray(),
+            ...gustopink.toArray(),
+            ...white.toArray(),
+            ...white.toArray(),
+            ...gustopink.toArray(),
         ] },
         alpha: { value: 0.0 },
     },
@@ -100,11 +101,11 @@ function render() {
 
     const delta = new Date() - start;
 
-    if (delta > 3000 && delta < 10000) {
+    if (delta > 1200 && delta < 8200) {
         camera.position.set(cam.x-=0.15, cam.y-=0.2, cam.z+=0.15);
     }
 
-    if (delta > 4500 && delta < 10000) {
+    if (delta > 2700 && delta < 8200) {
         catchphraseMaterial.uniforms.alpha.value += 0.05;
     }
 
